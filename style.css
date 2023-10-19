@@ -1,0 +1,346 @@
+/* default gelen boşlukları kaldırdık */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* scroll bir yere giderken ani değil yaaş ve animasyonlu şekilde gitsin istedik. */
+html {
+    scroll-behavior: smooth; 
+    /*navbardaki yönlendirme seçenklerine id ekledik. onlara basınca aşağıda id verdiğimiz
+    sectiona gidiyor. Bu scroll behavior da aşağıdaki ilgili kısma gidişini yavaşlatıp
+    güzelleştirdi. */
+}
+
+.center-item{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.align-box{
+    border-radius: 10px;
+    flex-basis: 30%;
+    margin-bottom: 30px;
+    /* course col da da yazmıştık, campus de de yazdık bu kodları. kod tekrarı olmasın diye
+    ayrı bir class oluşturduk. bunu html deki ilgili yerlere vereceğiz. Aslında 
+    course col daki bu kodları da silmek lazım ama orada not aldığım için silmedim. */
+}
+
+/* header */
+header{
+    background-color: lime;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/images/bg.webp);
+    /* renk geçişi olsun istedik. siyahtan siyaha ve biraz saydam bir geçiş olsun istedik ,
+    arka plana resim vermek istiyorsak devamına virgül koyarak eklemeliyiz. url ile */
+    background-position: center;
+    background-size: cover;
+    /* resmi ölçeklendirerek sıkıştırıyor */
+    position: relative;
+    /* az sonra başka bir elemana absolute vererek, bu kapsayıcının içinde onu pozisyonlayabiliriz  */
+}
+
+nav{
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center
+}
+
+nav a img{
+    width: 150px;
+}
+
+.nav-links{
+    flex: 1;
+    /* bu şu demek: logo ve ikon olduğu kadar alan kaplasın, geri kalan alanları bana ver.
+    mesela logoya da flex 1 deseydik, ikon olduğu kadar alan kaplayacaktı, kalan büyük alanı
+    logo ve div eşit bölüşecekti. */
+    text-align: right;
+}
+
+/* .nav-links ul{
+    display: flex;
+    gap: 10px;
+} böyle de yapılabilir, hemen aşağıdaki şekilde de */ 
+
+.nav-links ul li{
+    list-style-type: none;
+    display: inline-block;
+    /* blok olan elementi satır içine çevirmeyi sağlıyor bu da. yukarıdakine alternatif. 
+    üsttekinde kapsayıcıya diyoruz. burada elemanlara diyoruz.*/
+    padding: 8px 12px;
+    position: relative;
+    /* belki kullanırız diye relative verdik */
+}
+
+.nav-links ul li a{
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+}
+
+.nav-links ul li a::after{
+    content: '';
+    background-color: red;
+    display: block;
+    /* a'nın after'ına eklediğimiz şeyler aynı satıra gelmesin istedik. altına gitti. 
+    normalde sağındaydı */
+    margin-top: 4px;
+    width: 0;
+    height: 2px;
+    /* böylelikle ince bir çizgi haline getirdik */
+    /* genelde elemanların altına bi şey ekleyeceksek çizgi gibi arkadan renk gibi,
+    before after ile yaparız. */
+}
+
+.nav-links ul li a:hover::after{
+    width: 100%;
+    transition: .3s;
+}
+/* a nın üzerine fare geldiğinde afterında bir şey değiştirmek istedik */
+
+/* text-box */
+.text-box{
+    width: 80%;
+    text-align: center;
+    color: white;
+    position: absolute;
+    /* bu text box neyin içinde? body'nin içinde. */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* son 3 kod, tam ortalamak için. */
+}
+
+.text-box h1{
+    font-size: 55px;
+}
+
+.text-box p{
+    margin: 25px 40px;
+    font: 15px;
+    color: white;
+}
+
+.hero-btn{
+    color: white;
+    text-decoration: none; /*altındaki çizgiyi götürdük*/
+    border: 1px solid white;
+    padding: 15px 35px;
+    display: inline-block;
+    /* kapsayıcısının içine dahil olsun istedik. o yüzden inline block verdik.
+    çünkü padding verince aşağıya taştı. */
+    cursor: pointer;
+    background-color: transparent;
+    margin: 25px;
+}
+
+.hero-btn:hover{
+    border-color: red;
+    background-color: red;
+    transition: .3s;
+}
+
+nav .bi{
+    display: none; /*çünkü ekran küçülünce gelmesini isteyeceğim*/
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+nav .bi:hover{
+    font-size: 35px;
+    transition: .3s;
+}
+
+/* course seviyeleri */
+h1{
+    font-size: 35px;
+}
+
+p{
+    color: #777;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 10px;
+}
+
+.row{
+    margin-top: 5%;
+    display: flex;
+    /* satırın içindeki elemanları yan yana aldık */
+    justify-content: space-between;
+}
+
+.course-col{
+    background-color: rgb(230, 230, 230);
+    flex-basis: 30%;
+    /* her elemanın yüzde 30'u yani 3 eleman var, yüzde 30'dan 90 yapacak. geriye 10 kalıyor.
+    onu da aralara boşluk olarak verecek. */
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 10px;
+    /* padding verdik büyüdü. bunu önlemek için box-sizing border boz kullanıyoruz. */
+    box-sizing: border-box;
+    /* böylelikle içindeki elemnalar büyümden sınırlardan uzaklaşmaya başladı */
+}
+
+h3{
+    margin: 10px 0;
+}
+
+.course-col:hover{
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    transition: .3s;
+
+}
+
+/* NOT: BİR YERİ AYRI ÖZELLEŞTİRMİŞSEK O GEÇERLİ OLUR, GENEL OLAN GEÇERLİ OLMAZ ! */
+
+/* campus */
+
+.campus-col{
+    position: relative;
+    overflow: hidden;
+    /* resimler olurda taşar diye taşmaması için overflow hidden kullandık. */
+}
+
+.campus-col img{
+    width: 100%;
+    display: block; /*alt alta getirdik img ve yazıyı*/
+}
+
+.layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: .3s;
+}
+
+.layer:hover{
+    background-color: rgba(200,100,50,0.7);
+}
+
+.layer h3{
+    color: white;
+    opacity: 0;
+    width: 100%;
+    font-weight: 500;
+    font-size: 25px;
+    position: absolute;
+    bottom: 0;
+}
+
+.layer:hover h3{
+    bottom: 50%;
+    transition: .3s;
+    opacity: 1;
+}
+
+/* facilities */
+
+.facilities-col{
+    text-align: left;
+}
+
+.facilities-col img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* testimonials */
+.testimonials-col{
+    background-color: antiquewhite;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+}
+
+.testimonials-col img{
+    height: 50px;
+    margin-left: 5px;
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.testimonials-col p{
+    padding: 0;
+}
+
+.testimonials-col h3{
+    margin-top: 15px;
+}
+
+.testimonials-col .bi{
+    color: red;
+}
+
+/* urgent action */
+.ua{
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/images/london.jpeg);
+    padding: 100px 0;
+    text-align: center;
+    width: 80%;
+    margin: 100px auto; /*yukardan aşağıdan uzaklaşsın istedik o yüzden 100px, sağdan soldan 
+    ortaya alacak auto diyerek.*/
+    background-position: center;
+    background-size: cover; /*resim çok büyüktü, sığdırdık cover ile.*/
+    border-radius: 15px;
+}
+
+.ua h1{
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* about */
+footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer h1{
+    margin: 25px 0;
+}
+
+.icons .bi{
+    margin: 0 10px;
+    padding: 20px 10px;
+    color: red;
+    cursor: pointer;
+}
+
+.bi-lightning-fill{
+    color: red;
+}
+
+/* responsive */
+
+@media (max-width:768px) {
+    .text-box h1{
+        font-size: 30px;
+    }
+    
+    .nav-links ul li{
+        display: none;
+    }
+
+    nav .bi{
+        display: block;
+        /* ikon görünsün dedik */
+    }
+
+    .row{
+        flex-direction: column;
+    }
+    /* satırın içindeki elemanlar ekran küçüldüğünde alt alta gelsin */
+}
