@@ -5,4 +5,4 @@ HTML ve CSS ile oluşturulmuş yazılım okulu sitesi
 
 <h2> Ekran Görüntüsü </h2>
 
-![](ekran.gif)
+![](newgif.gif)
